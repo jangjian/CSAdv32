@@ -43,8 +43,17 @@ namespace CSAdv32
             get { return i * i; }
         }
     }
+
+
     internal class Program
     {
+        static void NextPos(int x, int y, int vx, int vy, out int rx, out int ry)
+        {
+            rx = x + vx;
+            ry = y + vy;
+        }
+
+
         static void Main(string[] args)
         {
             Wanted<int> wantedInt = new Wanted<int>(65535);
@@ -53,10 +62,8 @@ namespace CSAdv32
             Console.WriteLine(wantedInt.Value);
             Console.WriteLine(wantedString.Value);
             Console.WriteLine(wantedDouble.Value);
-
             SquareCalculator s = new SquareCalculator();
             Console.WriteLine(s[256]);
-
             Console.Write("숫자 입력: ");
             int output;
             bool result = int.TryParse(Console.ReadLine(), out output);
@@ -69,6 +76,14 @@ namespace CSAdv32
                 Console.WriteLine("숫자를 입력해주세요." + output);
             }
 
+            int x = 0;
+            int y = 0;
+            int vx = 1;
+            int vy = 1;
+
+            Console.WriteLine("현재좌표 x: {0}, y: {1}", x, y);
+            NextPos(x, y, vx, vy, out x, out y);
+            Console.WriteLine("다음좌표 x: {0}, y: {1}", x, y);
         }
     }
 }
