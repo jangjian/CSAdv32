@@ -13,12 +13,24 @@ namespace CSAdv32
             Value = value;
         }
     }
-
     class Needed<T, U> // Generic
     {
         public T Value1;
         public U Value2;
         public Needed(T value1, U value2)
+        {
+            Value1 = value1;
+            Value2 = value2;
+        }
+    }
+
+    class SpecialNeeded<T, U> // Generic
+        where T : IComparable
+        where U : IComparable, IDisposable
+    {
+        public T Value1;
+        public U Value2;
+        public SpecialNeeded(T value1, U value2)
         {
             Value1 = value1;
             Value2 = value2;
